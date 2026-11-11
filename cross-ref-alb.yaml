@@ -15,8 +15,7 @@ Resources:
       LoadBalancerAttributes:
         - Key: idle_timeout.timeout_seconds
           Value: '60'
-      Name: PraticalALB
-      Scheme: internet-facing 
+      Scheme: internet-facing
       SecurityGroups:
         - Fn::ImportValue: !Sub ${VpcStackName}-SecurityGroupALB
       Subnets:
@@ -50,7 +49,6 @@ Resources:
       UnhealthyThresholdCount: 2
       Matcher:
         HttpCode: 200
-      Name: PraticalTargetGroup
       Port: 80
       Protocol: HTTP
       TargetType: instance
@@ -73,5 +71,5 @@ Outputs:
     Description: Web Server target group
     Export:
       Name: !Sub ${AWS::StackName}-PraticalTargetGroup
-    Value: 
+    Value:
       Ref: PraticalTargetGroup
